@@ -5,11 +5,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(content: params[:content])
+    Post.create(content: params[:content], checked: false)
     redirect_to action: :index
   end
 
   def checked
+    binding.pry
     post = Post.find(params[:id])
     if post.checked 
       post.update(checked: false)
